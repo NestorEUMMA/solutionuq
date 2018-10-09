@@ -49,7 +49,7 @@ class DashboardAsset extends AssetBundle
         'template/js/plugins/datapicker/bootstrap-datepicker.js',
         'template/js/plugins/toastr/toastr.min.js',
         // 'js/main.js',
-        'js/bootbox.min.js',
+        // 'js/bootbox.min.js',
 
     ];
     public $depends = [

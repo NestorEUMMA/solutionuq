@@ -1,5 +1,18 @@
 <?php
 
+include '../include/dbconnect.php';
+$queryempresa = "SELECT IdEmpresa, NombreEmpresa
+               FROM empresa
+               WHERE IdEmpresa =  '" . $_SESSION['IdEmpresa'] . "'";
+            $resultadoempresa = $mysqli->query($queryempresa);
+            while ($test = $resultadoempresa->fetch_assoc())
+                       {
+                           $idempresa = $test['IdEmpresa'];
+                           $empresa = $test['NombreEmpresa'];
+
+                       }
+
+
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use app\models\Empleado;
@@ -9,6 +22,7 @@ use kartik\select2\Select2;
 /* @var $this yii\web\View */
 /* @var $model app\models\Honorariosearch */
 /* @var $form yii\widgets\ActiveForm */
+
 ?>
 
 <div class="honorario-search">
@@ -21,15 +35,15 @@ use kartik\select2\Select2;
 
 
       <?php
-  echo $form->field($model, 'IdEmpleado')->widget(Select2::classname(), [
-      'data' => ArrayHelper::map(Empleado::find()->where(['EmpleadoActivo' => 1])->all(), 'IdEmpleado', 'fullName'),
-      'language' => 'es',
-      'options' => ['placeholder' => ' Selecione ...'],
-      'pluginOptions' => [
-          'allowClear' => true
-      ],
-  ]);
-  ?>
+          echo $form->field($model, 'IdEmpleado')->widget(Select2::classname(), [
+              'data' => ArrayHelper::map(Empleado::find()->where(['EmpleadoActivo' => 1])->where('IdEmpresa' => $idempresa)->all(), 'IdEmpleado', 'fullName'),
+              'language' => 'es',
+              'options' => ['placeholder' => ' Selecione ...'],
+              'pluginOptions' => [
+                  'allowClear' => true
+              ],
+          ]);
+        ?>
 
   <?php
   echo $form->field($model, 'MesPeriodoHono')->widget(Select2::classname(), [

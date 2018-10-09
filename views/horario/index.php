@@ -9,6 +9,17 @@ if(!isset($_SESSION))
         session_start();
     }
 
+$queryempresa = "SELECT IdEmpresa, NombreEmpresa
+           FROM empresa
+           WHERE IdEmpresa =  '" . $_SESSION['IdEmpresa'] . "'";
+        $resultadoempresa = $mysqli->query($queryempresa);
+        while ($test = $resultadoempresa->fetch_assoc())
+                   {
+                       $idempresa = $test['IdEmpresa'];
+                       $empresa = $test['NombreEmpresa'];
+
+                   }
+
  $urlperupdate = '../horario/update';
  $urlperview = '../horario/view';
  $urlpercreate = '../horario/create';
@@ -108,11 +119,11 @@ if(!isset($_SESSION))
 $this->title = 'Horarios';
 $this->params['breadcrumbs'][] = $this->title;
 
-include '../include/dbconnect.php';
 
-      $queryempleado = "select IdEmpleado, CONCAT(PrimerNomEmpleado,' ',SegunNomEmpleado,' ',PrimerApellEmpleado,' ',SegunApellEmpleado)  AS NombreCompleto from empleado where EmpleadoActivo = 1 order by NombreCompleto asc";
+      $queryempleado = "select IdEmpleado, CONCAT(PrimerNomEmpleado,' ',SegunNomEmpleado,' ',PrimerApellEmpleado,' ',SegunApellEmpleado)  AS NombreCompleto from empleado where EmpleadoActivo = 1 and IdEmpresa = '".$idempresa."' order by NombreCompleto asc";
       $resultadoqueryempleado = $mysqli->query($queryempleado);
 ?>
+<link href="../../web/template/css/plugins/select2/select2.min.css" rel="stylesheet">
 </br>
 <div class="row">
     <div class="col-md-12">
@@ -158,18 +169,23 @@ include '../include/dbconnect.php';
       </div>
     </div>
 </div>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
+  <!--  -->
+
+
+  <div class="modal inmodal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog ">
+      <div class="modal-content animated bounceInRight">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                  <i class="fa fa-calendar modal-icon"></i>
+                  <h4 class="modal-title">HORARIOS</h4>
+                  <small class="font-bold">Sistema RRHH UQSolutions</small>
+              </div>
+              <div class="modal-body">
               <form action="../../views/horario/horarioguardar.php" role="form" method="POST">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Horarios a Empleado</h4>
-                </div>
-                <div class="modal-body">
-                <div class="form-group">
-                  <label for="title">Seleccione un Empleado:</label>
-                  <select name="Empleado" class="form-control">
+                  <div class="form-group">
+                  <label for="title">Empleado:</label>
+                  <select name="Empleado" class="select2_demo_1 form-control">
                       <option value="">--- Seleccione un Empleado ---</option>
                       <?php
                           while($row = $resultadoqueryempleado->fetch_assoc()){
@@ -179,7 +195,7 @@ include '../include/dbconnect.php';
                   </select>
                  </div>
                   <div class="form-group">
-                      <label for="title">Seleccione una Jornada:</label>
+                      <label for="title">Jornada:</label>
                       <select name="Jornada" class="form-control">
                         <option value="">--- Seleccione una Jornada ---</option>
                             <option value="Jornada 1">Jornada 1</option>
@@ -188,7 +204,7 @@ include '../include/dbconnect.php';
                       </select>
                   </div>
                  <div class="form-group">
-                      <label for="title">Seleccione un Dia:</label>
+                      <label for="title">Dia:</label>
                       <select name="Dia" class="form-control">
                         <option value="">--- Seleccione un Dia ---</option>
                             <option value="Lunes">Lunes</option>
@@ -208,18 +224,21 @@ include '../include/dbconnect.php';
                       <label for="title">Salida Laboral</label>
                       <input name="Salida" type="text" class="form-control timepicker"/>
                   </div>
-                <div class="modal-footer">
-                      <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                      <button type="submit" class="btn btn-success" name="guardarMenuUsuario" >Guardar Cambios</button>
-                </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                  <button type="submit" class="btn btn-primary">Guardar</button>
+              </div>
               </form>
-            </div>
-        </div>
-</div>
+          </div>
+      </div>
+  </div>
+
+
+
 <script src="../../web/template/js/jquery-3.2.1.min.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(document).ready(function(){
-
         demo.initFormExtendedDatetimepickers();
 
     });
