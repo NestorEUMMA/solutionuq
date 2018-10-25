@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Empresa;
-use app\models\EmpresaSearch;
+use app\models\Codigosepp;
+use app\models\CodigoseppSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * EmpresaController implements the CRUD actions for Empresa model.
+ * CodigoseppController implements the CRUD actions for Codigosepp model.
  */
-class EmpresaController extends Controller
+class CodigoseppController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,12 +30,12 @@ class EmpresaController extends Controller
     }
 
     /**
-     * Lists all Empresa models.
+     * Lists all Codigosepp models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new EmpresaSearch();
+        $searchModel = new CodigoseppSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,8 +45,8 @@ class EmpresaController extends Controller
     }
 
     /**
-     * Displays a single Empresa model.
-     * @param integer $id
+     * Displays a single Codigosepp model.
+     * @param string $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -58,13 +58,13 @@ class EmpresaController extends Controller
     }
 
     /**
-     * Creates a new Empresa model.
+     * Creates a new Codigosepp model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Empresa();
+        $model = new Codigosepp();
 
         if ($model->load(Yii::$app->request->post())) {
           if ($model->save()) {
@@ -72,7 +72,7 @@ class EmpresaController extends Controller
             } else {
               Yii::$app->session->setFlash('error', "User created successfully.");
             }
-            return $this->redirect(['view', 'id' => $model->IdEmpresa]);
+            return $this->redirect(['view', 'id' => $model->CodigoSepp]);
         }
 
         return $this->render('create', [
@@ -81,9 +81,9 @@ class EmpresaController extends Controller
     }
 
     /**
-     * Updates an existing Empresa model.
+     * Updates an existing Codigosepp model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
+     * @param string $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -97,7 +97,7 @@ class EmpresaController extends Controller
             } else {
               Yii::$app->session->setFlash('warning', "User created successfully.");
             }
-            return $this->redirect(['view', 'id' => $model->IdEmpresa]);
+            return $this->redirect(['view', 'id' => $model->CodigoSepp]);
         }
 
         return $this->render('update', [
@@ -106,9 +106,9 @@ class EmpresaController extends Controller
     }
 
     /**
-     * Deletes an existing Empresa model.
+     * Deletes an existing Codigosepp model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
+     * @param string $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -120,15 +120,15 @@ class EmpresaController extends Controller
     }
 
     /**
-     * Finds the Empresa model based on its primary key value.
+     * Finds the Codigosepp model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Empresa the loaded model
+     * @param string $id
+     * @return Codigosepp the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Empresa::findOne($id)) !== null) {
+        if (($model = Codigosepp::findOne($id)) !== null) {
             return $model;
         }
 

@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Empresa;
-use app\models\EmpresaSearch;
+use app\models\Configuraciongeneral;
+use app\models\ConfiguraciongeneralSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * EmpresaController implements the CRUD actions for Empresa model.
+ * ConfiguraciongeneralController implements the CRUD actions for Configuraciongeneral model.
  */
-class EmpresaController extends Controller
+class ConfiguraciongeneralController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,12 +30,12 @@ class EmpresaController extends Controller
     }
 
     /**
-     * Lists all Empresa models.
+     * Lists all Configuraciongeneral models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new EmpresaSearch();
+        $searchModel = new ConfiguraciongeneralSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class EmpresaController extends Controller
     }
 
     /**
-     * Displays a single Empresa model.
+     * Displays a single Configuraciongeneral model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,13 +58,13 @@ class EmpresaController extends Controller
     }
 
     /**
-     * Creates a new Empresa model.
+     * Creates a new Configuraciongeneral model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Empresa();
+        $model = new Configuraciongeneral();
 
         if ($model->load(Yii::$app->request->post())) {
           if ($model->save()) {
@@ -72,7 +72,7 @@ class EmpresaController extends Controller
             } else {
               Yii::$app->session->setFlash('error', "User created successfully.");
             }
-            return $this->redirect(['view', 'id' => $model->IdEmpresa]);
+            return $this->redirect(['view', 'id' => $model->IdConfiguracion]);
         }
 
         return $this->render('create', [
@@ -81,7 +81,7 @@ class EmpresaController extends Controller
     }
 
     /**
-     * Updates an existing Empresa model.
+     * Updates an existing Configuraciongeneral model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -97,7 +97,7 @@ class EmpresaController extends Controller
             } else {
               Yii::$app->session->setFlash('warning', "User created successfully.");
             }
-            return $this->redirect(['view', 'id' => $model->IdEmpresa]);
+            return $this->redirect(['view', 'id' => $model->IdConfiguracion]);
         }
 
         return $this->render('update', [
@@ -106,7 +106,7 @@ class EmpresaController extends Controller
     }
 
     /**
-     * Deletes an existing Empresa model.
+     * Deletes an existing Configuraciongeneral model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -120,15 +120,15 @@ class EmpresaController extends Controller
     }
 
     /**
-     * Finds the Empresa model based on its primary key value.
+     * Finds the Configuraciongeneral model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Empresa the loaded model
+     * @return Configuraciongeneral the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Empresa::findOne($id)) !== null) {
+        if (($model = Configuraciongeneral::findOne($id)) !== null) {
             return $model;
         }
 

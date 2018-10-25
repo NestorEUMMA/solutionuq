@@ -8,23 +8,23 @@ use yii\data\ActiveDataProvider;
 use app\models\Empresa;
 
 /**
- * EmpresaSearch represents the model behind the search form about `app\models\Empresa`.
+ * EmpresaSearch represents the model behind the search form of `app\models\Empresa`.
  */
 class EmpresaSearch extends Empresa
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
         return [
             [['IdEmpresa'], 'integer'],
-            [['NombreEmpresa', 'Direccion', 'IdDepartamentos', 'IdMunicipios', 'GiroFiscal', 'NrcEmpresa', 'NuPatronal' ,'NitEmpresa', 'EmpleadoActivo','IdEmpleado'], 'safe'],
+            [['NombreEmpresa', 'Direccion', 'IdDepartamentos', 'IdMunicipios', 'GiroFiscal', 'NrcEmpresa', 'NitEmpresa', 'Representante', 'EmpleadoActivo', 'NuPatronal', 'ImagenEmpresa'], 'safe'],
         ];
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function scenarios()
     {
@@ -47,9 +47,6 @@ class EmpresaSearch extends Empresa
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-                          'pagination' => [
-        'pagesize' => 10,
-    ],
         ]);
 
         $this->load($params);
@@ -72,9 +69,10 @@ class EmpresaSearch extends Empresa
             ->andFilterWhere(['like', 'GiroFiscal', $this->GiroFiscal])
             ->andFilterWhere(['like', 'NrcEmpresa', $this->NrcEmpresa])
             ->andFilterWhere(['like', 'NitEmpresa', $this->NitEmpresa])
-            ->andFilterWhere(['like', 'IdEmpleado', $this->IdEmpleado])
+            ->andFilterWhere(['like', 'Representante', $this->Representante])
+            ->andFilterWhere(['like', 'EmpleadoActivo', $this->EmpleadoActivo])
             ->andFilterWhere(['like', 'NuPatronal', $this->NuPatronal])
-            ->andFilterWhere(['like', 'EmpleadoActivo', $this->EmpleadoActivo]);
+            ->andFilterWhere(['like', 'ImagenEmpresa', $this->ImagenEmpresa]);
 
         return $dataProvider;
     }

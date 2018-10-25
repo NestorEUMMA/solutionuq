@@ -15,7 +15,33 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    
+    <?= $form->field($model, 'IdEmpresa') ?>
+
+    <?= $form->field($model, 'NombreEmpresa') ?>
+
+    <?= $form->field($model, 'Direccion') ?>
+
+    <?= $form->field($model, 'IdDepartamentos') ?>
+
+    <?= $form->field($model, 'IdMunicipios') ?>
+
+    <?php // echo $form->field($model, 'GiroFiscal') ?>
+
+    <?php // echo $form->field($model, 'NrcEmpresa') ?>
+
+    <?php // echo $form->field($model, 'NitEmpresa') ?>
+
+    <?php // echo $form->field($model, 'Representante') ?>
+
+    <?php // echo $form->field($model, 'EmpleadoActivo') ?>
+
+    <?php // echo $form->field($model, 'NuPatronal') ?>
+
+    <?php // echo $form->field($model, 'ImagenEmpresa') ?>
+
+    <div class="form-group">
+        <?= Html::submitButton('Buscar', ['class' => 'btn btn-info']) ?>
+    </div>
 
     <?php ActiveForm::end(); ?>
 

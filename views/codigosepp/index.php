@@ -29,10 +29,10 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\EmpresaSearch */
+/* @var $searchModel app\models\CodigoseppSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Empresas';
+$this->title = 'Codigosepps';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 </br>
@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
       <div class="ibox-title">
         <h3><?= Html::encode($this->title) ?></h3>
         <p align="right">
-           <?= Html::a('Ingresar Empresa', ['create'], ['class' => 'btn btn-primary']) ?>
+           <?= Html::a('Ingresar Codigosepp', ['create'], ['class' => 'btn btn-primary']) ?>
         </p>
       </div>
           <div class="ibox-content">
@@ -52,18 +52,8 @@ $this->params['breadcrumbs'][] = $this->title;
                       'dataProvider' => $dataProvider,
 'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
-                          'IdEmpresa',
-'NombreEmpresa',
-'Direccion',
-'IdDepartamentos',
-'IdMunicipios',
-// 'GiroFiscal',
-// 'NrcEmpresa',
-// 'NitEmpresa',
-// 'Representante',
-// 'EmpleadoActivo',
-// 'NuPatronal',
-// 'ImagenEmpresa',
+                          'CodigoSepp',
+'Descripcion',
                               ['class' => 'yii\grid\ActionColumn',
                                'options' => ['style' => 'width:100px;'],
                                'template' => " {view} {update} {delete} "

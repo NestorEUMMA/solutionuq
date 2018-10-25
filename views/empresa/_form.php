@@ -2,12 +2,6 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use kartik\select2\Select2;
-use kartik\depdrop\DepDrop;
-use app\models\Empleado;
-use app\models\Departamentos;
-use app\models\Municipios;
-use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Empresa */
@@ -21,31 +15,13 @@ use yii\helpers\ArrayHelper;
   <?php $form = ActiveForm::begin(); ?>
   <form class="form-horizontal">
   <div class="form-group">
-
-    <?= $form->field($model, 'NombreEmpresa')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'NombreEmpresa')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'Direccion')->textInput(['maxlength' => true]) ?>
 
-    <?php
+    <?= $form->field($model, 'IdDepartamentos')->textInput(['maxlength' => true]) ?>
 
-        $catList=ArrayHelper::map(app\models\Departamentos::find()->all(), 'IdDepartamentos', 'NombreDepartamento' );
-        echo $form->field($model, 'IdDepartamentos')->dropDownList($catList, ['id'=>'NombreDepartamento']);
-
-    ?>
-
-  <?php
-
-    echo $form->field($model, 'IdMunicipios')->widget(DepDrop::classname(), [
-        'options'=>['id'=>'DescripcionMunicipios'],
-        'pluginOptions'=>[
-        'depends'=>['NombreDepartamento'],
-         'type' => DepDrop::TYPE_SELECT2,
-        'select2Options'=>['pluginOptions'=>['allowClear'=>true]],
-        'placeholder'=>'Seleccione...',
-        'url'=>  \yii\helpers\Url::to(['empleado/subcat'])
-        ]
-        ]);
-    ?>
+    <?= $form->field($model, 'IdMunicipios')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'GiroFiscal')->textInput(['maxlength' => true]) ?>
 
@@ -53,18 +29,13 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'NitEmpresa')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'Representante')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'EmpleadoActivo')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'NuPatronal')->textInput(['maxlength' => true]) ?>
 
-    <?php
-   echo $form->field($model, 'IdEmpleado')->widget(Select2::classname(), [
-       'data' => ArrayHelper::map(Empleado::find()->where(['EmpleadoActivo' => 1])->all(), 'IdEmpleado', 'fullName'),
-       'language' => 'es',
-       'options' => ['placeholder' => ' Selecione ...'],
-       'pluginOptions' => [
-           'allowClear' => true
-       ],
-   ]);
-   ?>
+    <?= $form->field($model, 'ImagenEmpresa')->textInput(['maxlength' => true]) ?>
 
    </div>
     <div class="form-group" align="right">
