@@ -1,0 +1,4 @@
+localhost
+db_planilla
+root
+nest2015
