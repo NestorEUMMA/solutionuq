@@ -32,7 +32,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\CodigoseppSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Codigosepps';
+$this->title = 'Codigo Sepps';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 </br>
@@ -42,17 +42,17 @@ $this->params['breadcrumbs'][] = $this->title;
       <div class="ibox-title">
         <h3><?= Html::encode($this->title) ?></h3>
         <p align="right">
-           <?= Html::a('Ingresar Codigosepp', ['create'], ['class' => 'btn btn-primary']) ?>
+           <?= Html::a('Ingresar Codigo Sepp', ['create'], ['class' => 'btn btn-primary']) ?>
         </p>
       </div>
           <div class="ibox-content">
               <table class="table table-hover">
-                  <?php echo $this->render('_search', ['model' => $searchModel]); ?>
+                 <!--  <?php echo $this->render('_search', ['model' => $searchModel]); ?> -->
                                     <?= GridView::widget([
                       'dataProvider' => $dataProvider,
 'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
-                          'CodigoSepp',
+                          // 'CodigoSepp',
 'Descripcion',
                               ['class' => 'yii\grid\ActionColumn',
                                'options' => ['style' => 'width:100px;'],

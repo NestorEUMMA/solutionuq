@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Codigoobservacion */
 
-$this->title = $model->IdCodigoObservacion;
-$this->params['breadcrumbs'][] = ['label' => 'Codigoobservacions', 'url' => ['index']];
+$this->title = $model->DescripcionCodigo;
+$this->params['breadcrumbs'][] = ['label' => 'Codigo Observacion OVISSS', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 </br>
@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= DetailView::widget([
                     'model' => $model,
                     'attributes' => [
-                        'IdCodigoObservacion',
+                        // 'IdCodigoObservacion',
             'Codigo',
             'DescripcionCodigo',
                     ],

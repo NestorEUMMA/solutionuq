@@ -67,6 +67,7 @@ class ConfiguraciongeneralSearch extends Configuraciongeneral
             'HonorariosConfig' => $this->HonorariosConfig,
             'IdUsuario' => $this->IdUsuario,
             'IdEmpresa' => $this->IdEmpresa,
+            'empresa.NombreEmpresa' => $this->IdEmpresa,
         ]);
 
         return $dataProvider;

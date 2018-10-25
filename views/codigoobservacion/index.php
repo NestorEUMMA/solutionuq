@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\CodigoobservacionSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Codigoobservacions';
+$this->title = 'Codigo Observacion OVISSS';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 </br>
@@ -17,17 +17,17 @@ $this->params['breadcrumbs'][] = $this->title;
       <div class="ibox-title">
         <h3><?= Html::encode($this->title) ?></h3>
         <p align="right">
-           <?= Html::a('Ingresar Codigoobservacion', ['create'], ['class' => 'btn btn-primary']) ?>
+           <?= Html::a('Ingresar Codigo Observacion', ['create'], ['class' => 'btn btn-primary']) ?>
         </p>
       </div>
           <div class="ibox-content">
               <table class="table table-hover">
-                  <?php echo $this->render('_search', ['model' => $searchModel]); ?>
+                  <!-- <?php echo $this->render('_search', ['model' => $searchModel]); ?> -->
                                     <?= GridView::widget([
                       'dataProvider' => $dataProvider,
 'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
-                          'IdCodigoObservacion',
+                          // 'IdCodigoObservacion',
 'Codigo',
 'DescripcionCodigo',
                               ['class' => 'yii\grid\ActionColumn',

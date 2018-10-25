@@ -32,7 +32,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\ConfiguraciongeneralSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Configuraciongenerals';
+$this->title = 'Configuracion General';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 </br>
@@ -42,24 +42,25 @@ $this->params['breadcrumbs'][] = $this->title;
       <div class="ibox-title">
         <h3><?= Html::encode($this->title) ?></h3>
         <p align="right">
-           <?= Html::a('Ingresar Configuraciongeneral', ['create'], ['class' => 'btn btn-primary']) ?>
+           <?= Html::a('Ingresar Configuracion General', ['create'], ['class' => 'btn btn-primary']) ?> 
         </p>
       </div>
           <div class="ibox-content">
               <table class="table table-hover">
-                  <?php echo $this->render('_search', ['model' => $searchModel]); ?>
+                 <!--  <?php echo $this->render('_search', ['model' => $searchModel]); ?> -->
                                     <?= GridView::widget([
                       'dataProvider' => $dataProvider,
 'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
-                          'IdConfiguracion',
-'SalarioMinimo',
-'ComisionesConfig',
-'HorasExtrasConfig',
-'BonosConfig',
-// 'HonorariosConfig',
+                          // 'IdConfiguracion',
+                        'empresa.NombreEmpresa',
+                        'SalarioMinimo',
+                        'ComisionesConfig:boolean',
+                        'HorasExtrasConfig:boolean',
+                        'BonosConfig:boolean',
+                        'HonorariosConfig:boolean',
 // 'IdUsuario',
-// 'IdEmpresa',
+// 
                               ['class' => 'yii\grid\ActionColumn',
                                'options' => ['style' => 'width:100px;'],
                                'template' => " {view} {update} {delete} "

@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Codigoobservacion */
 
-$this->title = 'Crear Codigoobservacion';
-$this->params['breadcrumbs'][] = ['label' => 'Codigoobservacions', 'url' => ['index']];
+$this->title = 'Crear Codigo Observacion OVISSS';
+$this->params['breadcrumbs'][] = ['label' => 'Codigo Observacion OVISSS', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 </br>

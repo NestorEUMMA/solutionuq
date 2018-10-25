@@ -57,6 +57,8 @@ class Configuraciongeneral extends \yii\db\ActiveRecord
             'HonorariosConfig' => 'Honorarios Config',
             'IdUsuario' => 'Id Usuario',
             'IdEmpresa' => 'Id Empresa',
+            'empresa.NombreEmpresa' => 'Empresa'
+
         ];
     }
 
