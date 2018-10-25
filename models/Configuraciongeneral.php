@@ -51,12 +51,12 @@ class Configuraciongeneral extends \yii\db\ActiveRecord
         return [
             'IdConfiguracion' => 'Id Configuracion',
             'SalarioMinimo' => 'Salario Minimo',
-            'ComisionesConfig' => 'Comisiones Config',
-            'HorasExtrasConfig' => 'Horas Extras Config',
-            'BonosConfig' => 'Bonos Config',
-            'HonorariosConfig' => 'Honorarios Config',
-            'IdUsuario' => 'Id Usuario',
-            'IdEmpresa' => 'Id Empresa',
+            'ComisionesConfig' => 'Comisiones ISSS-AFP',
+            'HorasExtrasConfig' => 'Horas Extras ISSS-AFP',
+            'BonosConfig' => 'Bonos ISSS-AFP',  
+            'HonorariosConfig' => 'Honorarios ISSS-AFP',
+            'IdUsuario' => 'Usuario',
+            'IdEmpresa' => 'Empresa',
             'empresa.NombreEmpresa' => 'Empresa'
 
         ];

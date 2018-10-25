@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\EstadocivilSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Estadocivils';
+$this->title = 'Estado Civil';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 </br>
@@ -22,13 +22,13 @@ $this->params['breadcrumbs'][] = $this->title;
       </div>
           <div class="ibox-content">
               <table class="table table-hover">
-                  <?php echo $this->render('_search', ['model' => $searchModel]); ?>
+                  <!-- <?php echo $this->render('_search', ['model' => $searchModel]); ?> -->
                                     <?= GridView::widget([
                       'dataProvider' => $dataProvider,
 'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
-                          'IdEstadoCivil',
-'DescripcionEstadoCivil',
+                          // 'IdEstadoCivil',
+                          'DescripcionEstadoCivil',
                               ['class' => 'yii\grid\ActionColumn',
                                'options' => ['style' => 'width:100px;'],
                                'template' => " {view} {update} {delete} "

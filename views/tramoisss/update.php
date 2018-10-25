@@ -5,9 +5,9 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Tramoisss */
 
-$this->title = 'Actualizar Tramoisss: ' . $model->IdTramoIsss;
-$this->params['breadcrumbs'][] = ['label' => 'Tramoissses', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->IdTramoIsss, 'url' => ['view', 'id' => $model->IdTramoIsss]];
+$this->title = 'Actualizar Tramo ISSS: ' . $model->TramoIsss;
+$this->params['breadcrumbs'][] = ['label' => 'Tramo ISSS', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->TramoIsss, 'url' => ['view', 'id' => $model->IdTramoIsss]];
 $this->params['breadcrumbs'][] = 'Actualizar';
 ?>
 </br>

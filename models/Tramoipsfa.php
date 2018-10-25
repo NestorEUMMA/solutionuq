@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "tramoipsfa".
  *
- * @property integer $IdTramoIpsfa
+ * @property int $IdTramoIpsfa
  * @property string $TramoIpsfa
  * @property string $TechoIpsfa
  * @property string $TechoIpsfaSig
@@ -15,7 +15,7 @@ use Yii;
 class Tramoipsfa extends \yii\db\ActiveRecord
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public static function tableName()
     {
@@ -23,7 +23,7 @@ class Tramoipsfa extends \yii\db\ActiveRecord
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -33,7 +33,7 @@ class Tramoipsfa extends \yii\db\ActiveRecord
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {

@@ -8,12 +8,12 @@ use yii\data\ActiveDataProvider;
 use app\models\Tramoipsfa;
 
 /**
- * TramoipsfaSearch represents the model behind the search form about `app\models\Tramoipsfa`.
+ * TramoipsfaSearch represents the model behind the search form of `app\models\Tramoipsfa`.
  */
 class TramoipsfaSearch extends Tramoipsfa
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -24,7 +24,7 @@ class TramoipsfaSearch extends Tramoipsfa
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function scenarios()
     {
@@ -47,9 +47,6 @@ class TramoipsfaSearch extends Tramoipsfa
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-                                     'pagination' => [
-        'pagesize' => 10,
-    ],
         ]);
 
         $this->load($params);

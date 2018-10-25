@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\TramoisrSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Tramoisrs';
+$this->title = 'Tramo ISR';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 </br>
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
       <div class="ibox-title">
         <h3><?= Html::encode($this->title) ?></h3>
         <p align="right">
-           <?= Html::a('Ingresar Tramoisr', ['create'], ['class' => 'btn btn-primary']) ?>
+           <?= Html::a('Ingresar Tramo ISR', ['create'], ['class' => 'btn btn-primary']) ?>
         </p>
       </div>
           <div class="ibox-content">
@@ -27,14 +27,14 @@ $this->params['breadcrumbs'][] = $this->title;
                       'dataProvider' => $dataProvider,
 'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
-                          'IdTramoIsr',
-'NumTramo',
-'TramoDesde',
-'TramoHasta',
-'TramoAplicarPorcen',
-// 'TramoExceso',
-// 'TramoCuota',
-// 'TramoFormaPago',
+                          // 'IdTramoIsr',
+                            'NumTramo',
+                            'TramoDesde',
+                            'TramoHasta',
+                            'TramoAplicarPorcen',
+                            'TramoExceso',
+                            'TramoCuota',
+                            'TramoFormaPago',
                               ['class' => 'yii\grid\ActionColumn',
                                'options' => ['style' => 'width:100px;'],
                                'template' => " {view} {update} {delete} "

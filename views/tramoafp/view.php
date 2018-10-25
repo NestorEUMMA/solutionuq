@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Tramoafp */
 
-$this->title = $model->IdTramoAfp;
-$this->params['breadcrumbs'][] = ['label' => 'Tramoafps', 'url' => ['index']];
+$this->title = $model->TramoAfp;
+$this->params['breadcrumbs'][] = ['label' => 'Tramo AFP', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 </br>
@@ -26,9 +26,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     'model' => $model,
                     'attributes' => [
                         'IdTramoAfp',
-            'TramoAfp',
-            'TechoAfp',
-            'TechoAfpSig',
+                        'TramoAfp',
+                        'TechoAfp',
+                        'TechoAfpSig',
                     ],
                 ]) ?>
             </table>

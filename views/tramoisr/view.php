@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Tramoisr */
 
-$this->title = $model->IdTramoIsr;
-$this->params['breadcrumbs'][] = ['label' => 'Tramoisrs', 'url' => ['index']];
+$this->title = $model->NumTramo;
+$this->params['breadcrumbs'][] = ['label' => 'Tramo ISR', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 </br>
@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= DetailView::widget([
                     'model' => $model,
                     'attributes' => [
-                        'IdTramoIsr',
+                        // 'IdTramoIsr',
             'NumTramo',
             'TramoDesde',
             'TramoHasta',

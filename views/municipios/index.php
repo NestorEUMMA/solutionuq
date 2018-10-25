@@ -17,25 +17,25 @@ $this->params['breadcrumbs'][] = $this->title;
       <div class="ibox-title">
         <h3><?= Html::encode($this->title) ?></h3>
         <p align="right">
-           <?= Html::a('Ingresar Municipios', ['create'], ['class' => 'btn btn-primary']) ?>
+           <!-- <?= Html::a('Ingresar Municipios', ['create'], ['class' => 'btn btn-primary']) ?> -->
         </p>
       </div>
           <div class="ibox-content">
               <table class="table table-hover">
-                  <?php echo $this->render('_search', ['model' => $searchModel]); ?>
+                  <!-- <?php echo $this->render('_search', ['model' => $searchModel]); ?> -->
                                     <?= GridView::widget([
                       'dataProvider' => $dataProvider,
 'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
-                          'IdMunicipios',
-'DescripcionMunicipios',
-'IdPadre',
-'Nivel',
-'Jerarquia',
-// 'IdDepartamentos',
+                          // 'IdMunicipios',
+                          'DescripcionMunicipios',
+                          // 'IdPadre',
+                          // 'Nivel',
+                          // 'Jerarquia',
+                          // 'IdDepartamentos',
                               ['class' => 'yii\grid\ActionColumn',
                                'options' => ['style' => 'width:100px;'],
-                               'template' => " {view} {update} {delete} "
+                               'template' => "  "
                               ],
                           ],
                       ]); ?>

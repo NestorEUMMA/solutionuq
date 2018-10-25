@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Tipodocumento */
 
-$this->title = $model->IdTipoDocumento;
-$this->params['breadcrumbs'][] = ['label' => 'Tipodocumentos', 'url' => ['index']];
+$this->title = $model->DescripcionTipoDocumento;
+$this->params['breadcrumbs'][] = ['label' => 'Tipo Documentos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 </br>
@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= DetailView::widget([
                     'model' => $model,
                     'attributes' => [
-                        'IdTipoDocumento',
+                        // 'IdTipoDocumento',
             'DescripcionTipoDocumento',
                     ],
                 ]) ?>

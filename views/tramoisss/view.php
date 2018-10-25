@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Tramoisss */
 
-$this->title = $model->IdTramoIsss;
-$this->params['breadcrumbs'][] = ['label' => 'Tramoissses', 'url' => ['index']];
+$this->title = $model->TramoIsss;
+$this->params['breadcrumbs'][] = ['label' => 'Tramo ISSS', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 </br>

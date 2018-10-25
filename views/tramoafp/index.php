@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\TramoafpSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Tramoafps';
+$this->title = 'Tramo AFP';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 </br>
@@ -17,12 +17,12 @@ $this->params['breadcrumbs'][] = $this->title;
       <div class="ibox-title">
         <h3><?= Html::encode($this->title) ?></h3>
         <p align="right">
-           <?= Html::a('Ingresar Tramoafp', ['create'], ['class' => 'btn btn-primary']) ?>
+           <?= Html::a('Ingresar Tramo AFP', ['create'], ['class' => 'btn btn-primary']) ?>
         </p>
       </div>
           <div class="ibox-content">
               <table class="table table-hover">
-                  <?php echo $this->render('_search', ['model' => $searchModel]); ?>
+                  <!-- <?php echo $this->render('_search', ['model' => $searchModel]); ?> -->
                                     <?= GridView::widget([
                       'dataProvider' => $dataProvider,
 'columns' => [
