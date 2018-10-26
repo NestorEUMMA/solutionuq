@@ -8,6 +8,8 @@ use app\models\EmpresaSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\Json;
+use yii\web\UploadedFile;
 
 /**
  * EmpresaController implements the CRUD actions for Empresa model.
@@ -66,18 +68,25 @@ class EmpresaController extends Controller
     {
         $model = new Empresa();
 
-        if ($model->load(Yii::$app->request->post())) {
-          if ($model->save()) {
-            Yii::$app->session->setFlash('success', "User created successfully.");
-            } else {
-              Yii::$app->session->setFlash('error', "User created successfully.");
-            }
-            return $this->redirect(['view', 'id' => $model->IdEmpresa]);
-        }
 
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        if ($model->load(Yii::$app->request->post())) {
+
+            $imageName = $model->NombreEmpresa;
+            $model->file = UploadedFile::getInstance($model, 'file');
+            if (!empty($model->file)) {
+              $imageName = $model->NombreEmpresa;
+              $model->file = UploadedFile::getInstance($model, 'file');
+              $model->file->saveAs( 'uploads/usuarios/'.$imageName.'.'.$model->file->extension);
+              $model->ImagenEmpresa = 'uploads/usuarios/'.$imageName.'.'.$model->file->extension;
+              $model->save(false);
+            }
+            $model->save(false);
+            return $this->redirect(['view', 'id' => $model->IdEmpresa]);
+        } else {
+            return $this->render('create', [
+                'model' => $model,
+            ]);
+        }
     }
 
     /**
@@ -89,20 +98,28 @@ class EmpresaController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+      $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post())) {
-          if ($model->save()) {
-            Yii::$app->session->setFlash('warning', "User created successfully.");
-            } else {
-              Yii::$app->session->setFlash('warning', "User created successfully.");
-            }
-            return $this->redirect(['view', 'id' => $model->IdEmpresa]);
+
+          $model->file = UploadedFile::getInstance($model, 'file');
+
+          if (!empty($model->file)) {
+            $imageName = $model->NombreEmpresa;
+            $model->file = UploadedFile::getInstance($model, 'file');
+            $model->file->saveAs( 'uploads/usuarios/'.$imageName.'.'.$model->file->extension);
+            $model->ImagenEmpresa = 'uploads/usuarios/'.$imageName.'.'.$model->file->extension;
+            $model->save(false);
+          }
+
+          $model->save(false);
+          return $this->redirect(['view', 'id' => $model->IdEmpresa]);
+        } else {
+          return $this->render('update', [
+          'model' => $model,
+          ]);
         }
 
-        return $this->render('update', [
-            'model' => $model,
-        ]);
     }
 
     /**
@@ -134,4 +151,19 @@ class EmpresaController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    public function actionSubcat() {
+        $out = [];
+        if (isset($_POST['depdrop_parents'])) {
+        $parents = $_POST['depdrop_parents'];
+
+        if ($parents != null) {
+        $cat_id = $parents[0];
+        $out = \app\models\Empleado::getCity($cat_id);
+        echo Json::encode(['output'=>$out, 'selected'=>'']);
+        return;
+        }
+        }
+        echo Json::encode(['output'=>'', 'selected'=>'']);
+        }
 }

@@ -5,7 +5,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Empresa */
 
-$this->title = $model->IdEmpresa;
+$this->title = $model->NombreEmpresa;
 $this->params['breadcrumbs'][] = ['label' => 'Empresas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -71,16 +71,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= DetailView::widget([
                     'model' => $model,
                     'attributes' => [
-                        'IdEmpresa',
+                        // 'IdEmpresa',
             'NombreEmpresa',
             'Direccion',
-            'IdDepartamentos',
-            'IdMunicipios',
+            'departamentos.NombreDepartamento',
+            'municipios.DescripcionMunicipios',
             'GiroFiscal',
             'NrcEmpresa',
             'NitEmpresa',
             'Representante',
-            'EmpleadoActivo',
+            // 'EmpleadoActivo',
             'NuPatronal',
             'ImagenEmpresa',
                     ],

@@ -51,6 +51,7 @@ class Empresa extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+    public $file;
     public static function tableName()
     {
         return 'empresa';
@@ -68,6 +69,7 @@ class Empresa extends \yii\db\ActiveRecord
             [['ImagenEmpresa'], 'string', 'max' => 200],
             [['IdDepartamentos'], 'exist', 'skipOnError' => true, 'targetClass' => Departamentos::className(), 'targetAttribute' => ['IdDepartamentos' => 'IdDepartamentos']],
             [['IdMunicipios'], 'exist', 'skipOnError' => true, 'targetClass' => Municipios::className(), 'targetAttribute' => ['IdMunicipios' => 'IdMunicipios']],
+             [['file'], 'file','skipOnEmpty' => true, 'extensions' => 'png, jpg, jpeg, gif'],
         ];
     }
 
@@ -80,15 +82,16 @@ class Empresa extends \yii\db\ActiveRecord
             'IdEmpresa' => 'Id Empresa',
             'NombreEmpresa' => 'Nombre Empresa',
             'Direccion' => 'Direccion',
-            'IdDepartamentos' => 'Id Departamentos',
-            'IdMunicipios' => 'Id Municipios',
+            'IdDepartamentos' => 'Departamento',
+            'IdMunicipios' => 'Municipio',
             'GiroFiscal' => 'Giro Fiscal',
-            'NrcEmpresa' => 'Nrc Empresa',
-            'NitEmpresa' => 'Nit Empresa',
+            'NrcEmpresa' => 'NRC',
+            'NitEmpresa' => 'NIT',
             'Representante' => 'Representante',
             'EmpleadoActivo' => 'Empleado Activo',
-            'NuPatronal' => 'Nu Patronal',
-            'ImagenEmpresa' => 'Imagen Empresa',
+            'NuPatronal' => 'Numero Patronal',
+            'ImagenEmpresa' => 'Logo',
+            'file' => 'Logo'
         ];
     }
 

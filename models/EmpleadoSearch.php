@@ -68,7 +68,7 @@ class EmpleadoSearch extends Empleado
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
                 'pagination' => [
-        'pagesize' => 35,
+        'pagesize' => 100,
     ],
         ]);
 
