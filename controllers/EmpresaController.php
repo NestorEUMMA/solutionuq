@@ -78,9 +78,18 @@ class EmpresaController extends Controller
               $model->file = UploadedFile::getInstance($model, 'file');
               $model->file->saveAs( 'uploads/usuarios/'.$imageName.'.'.$model->file->extension);
               $model->ImagenEmpresa = 'uploads/usuarios/'.$imageName.'.'.$model->file->extension;
-              $model->save(false);
+              // $model->save(false);
+              if ($model->save(false)) {
+                    Yii::$app->session->setFlash('success', "User created successfully.");
+                    } else {
+                      Yii::$app->session->setFlash('error', "User created successfully.");
+                    }
             }
-            $model->save(false);
+            if ($model->save(false)) {
+                Yii::$app->session->setFlash('success', "User created successfully.");
+                } else {
+                  Yii::$app->session->setFlash('error', "User created successfully.");
+                }
             return $this->redirect(['view', 'id' => $model->IdEmpresa]);
         } else {
             return $this->render('create', [
@@ -109,10 +118,18 @@ class EmpresaController extends Controller
             $model->file = UploadedFile::getInstance($model, 'file');
             $model->file->saveAs( 'uploads/usuarios/'.$imageName.'.'.$model->file->extension);
             $model->ImagenEmpresa = 'uploads/usuarios/'.$imageName.'.'.$model->file->extension;
-            $model->save(false);
+            if ($model->save(false)) {
+                    Yii::$app->session->setFlash('success', "User created successfully.");
+                    } else {
+                      Yii::$app->session->setFlash('error', "User created successfully.");
+                    }
           }
 
-          $model->save(false);
+          if ($model->save(false)) {
+                    Yii::$app->session->setFlash('success', "User created successfully.");
+                    } else {
+                      Yii::$app->session->setFlash('error', "User created successfully.");
+                    }
           return $this->redirect(['view', 'id' => $model->IdEmpresa]);
         } else {
           return $this->render('update', [

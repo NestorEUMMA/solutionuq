@@ -78,9 +78,17 @@ class EmpleadoController extends Controller
               $model->file = UploadedFile::getInstance($model, 'file');
               $model->file->saveAs( 'uploads/'.$imageName.'.'.$model->file->extension );
               $model->EmpleadoImagen = 'uploads/'.$imageName.'.'.$model->file->extension;
-              $model->save(false);
+              if ($model->save(false)) {
+                    Yii::$app->session->setFlash('success', "User created successfully.");
+                    } else {
+                      Yii::$app->session->setFlash('error', "User created successfully.");
+                    }
             }
-            $model->save(false);
+            if ($model->save(false)) {
+                    Yii::$app->session->setFlash('success', "User created successfully.");
+                    } else {
+                      Yii::$app->session->setFlash('error', "User created successfully.");
+                    }
             return $this->redirect(['view', 'id' => $model->IdEmpleado]);
         } else {
             return $this->render('create', [
@@ -108,10 +116,18 @@ class EmpleadoController extends Controller
             $model->file = UploadedFile::getInstance($model, 'file');
             $model->file->saveAs( 'uploads/'.$imageName.'.'.$model->file->extension );
             $model->EmpleadoImagen = 'uploads/'.$imageName.'.'.$model->file->extension;
-            $model->save(false);
+            if ($model->save(false)) {
+                    Yii::$app->session->setFlash('success', "User created successfully.");
+                    } else {
+                      Yii::$app->session->setFlash('error', "User created successfully.");
+                    }
           }
 
-          $model->save(false);
+          if ($model->save(false)) {
+                    Yii::$app->session->setFlash('success', "User created successfully.");
+                    } else {
+                      Yii::$app->session->setFlash('error', "User created successfully.");
+                    }
           return $this->redirect(['view', 'id' => $model->IdEmpleado]);
         } else {
           return $this->render('update', [
@@ -131,32 +147,10 @@ class EmpleadoController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
+        Yii::$app->session->setFlash('error', "User created successfully.");
         return $this->redirect(['index']);
     }
 
-
-    //    public function actionList($id)
-    // {
-    //     $countMunicipios = Municipios::find()
-    //         ->where(['IdDepartamentos' => $id])
-    //         ->count();
-
-    //     $municipios = Municipios::find()
-    //         ->where(['IdDepartamentos' => $id])
-    //         ->all();
-
-    //     if($countMunicipios > 0)
-    //     {
-    //         foreach ($municipios as $municipio) {
-    //             echo "<option value='".$municipio->IdMunicipios."'>".$municipio->DescripcionMunicipios."</option>";
-    //         }
-    //     }
-    //     else{
-    //         echo "<option> - </option>";
-    //     }
-
-    // }
 
 
     public function actionSubcat() {
@@ -188,7 +182,6 @@ class EmpleadoController extends Controller
         }
         echo Json::encode(['output'=>'', 'selected'=>'']);
         }
-
 
 
     /**
