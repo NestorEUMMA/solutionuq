@@ -8,23 +8,23 @@ use yii\data\ActiveDataProvider;
 use app\models\Horario;
 
 /**
- * Horariosearch represents the model behind the search form about `app\models\Horario`.
+ * HorarioSearch represents the model behind the search form of `app\models\Horario`.
  */
-class Horariosearch extends Horario
+class HorarioSearch extends Horario
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['IdHorario', 'IdEmpleado'], 'integer'],
+            [['IdHorario', 'IdEmpleado', 'IdEmpresa', 'IdUsuario'], 'integer'],
             [['JornadaLaboral', 'DiaLaboral', 'EntradaLaboral', 'SalidaLaboral'], 'safe'],
         ];
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function scenarios()
     {
@@ -41,14 +41,28 @@ class Horariosearch extends Horario
      */
     public function search($params)
     {
-        $query = Horario::find();
+        include '../include/dbconnect.php';
+        $queryempresa = "SELECT IdEmpresa, NombreEmpresa
+               FROM empresa
+               WHERE IdEmpresa =  '" . $_SESSION['IdEmpresa'] . "'";
+            $resultadoempresa = $mysqli->query($queryempresa);
+            while ($test = $resultadoempresa->fetch_assoc())
+                       {
+                           $idempresa = $test['IdEmpresa'];
+                           $empresa = $test['NombreEmpresa'];
+
+                       }
+
+        $query = Horario::find()
+        ->where([
+                '=','IdEmpresa', ''.$idempresa.'']);
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
                 'pagination' => [
-        'pagesize' => 10,
+        'pagesize' => 100,
     ],
         ]);
 
@@ -64,6 +78,8 @@ class Horariosearch extends Horario
         $query->andFilterWhere([
             'IdHorario' => $this->IdHorario,
             'IdEmpleado' => $this->IdEmpleado,
+            'IdEmpresa' => $this->IdEmpresa,
+            'IdUsuario' => $this->IdUsuario,
         ]);
 
         $query->andFilterWhere(['like', 'JornadaLaboral', $this->JornadaLaboral])
