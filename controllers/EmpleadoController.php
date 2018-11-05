@@ -117,14 +117,14 @@ class EmpleadoController extends Controller
             $model->file->saveAs( 'uploads/'.$imageName.'.'.$model->file->extension );
             $model->EmpleadoImagen = 'uploads/'.$imageName.'.'.$model->file->extension;
             if ($model->save(false)) {
-                    Yii::$app->session->setFlash('success', "User created successfully.");
+                    Yii::$app->session->setFlash('warning', "User created successfully.");
                     } else {
                       Yii::$app->session->setFlash('error', "User created successfully.");
                     }
           }
 
           if ($model->save(false)) {
-                    Yii::$app->session->setFlash('success', "User created successfully.");
+                    Yii::$app->session->setFlash('warning', "User created successfully.");
                     } else {
                       Yii::$app->session->setFlash('error', "User created successfully.");
                     }

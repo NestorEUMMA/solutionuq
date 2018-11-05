@@ -38,6 +38,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Empleados', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 </br>
+
 <?php if (Yii::$app->session->hasFlash("success")): ?>
 <?php
     $session = \Yii::$app->getSession();
@@ -83,6 +84,7 @@ $this->params['breadcrumbs'][] = $this->title;
       "hideMethod" => "fadeOut"
       ]
   ]);?>
+  <?php endif; ?> 
 <div class="row">
     <div class="col-md-12">
       <div class="ibox float-e-margins">
