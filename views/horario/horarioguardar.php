@@ -16,12 +16,10 @@ session_start();
     $Dia = $_POST['Dia'];
     $Entrada = $_POST['Entrada'];
     $Salida = $_POST['Salida'];
-    $IdEmpresa = $_POST['IdEmpresa'];
-    $IdUsuario = $_POST['IdUsuario'];
 
 
-    $insertexpediente = "INSERT INTO horario(IdEmpleado,JornadaLaboral,DiaLaboral, EntradaLaboral, SalidaLaboral, IdEmpresa, IdUsuario)"
-                       . "VALUES ('$Empleado','$Jornada','$Dia', '$Entrada', '$Salida', '$IdEmpresa', '$IdUsuario')";
+    $insertexpediente = "INSERT INTO horario(IdEmpleado,JornadaLaboral,DiaLaboral, EntradaLaboral, SalidaLaboral)"
+                       . "VALUES ('$Empleado','$Jornada','$Dia', '$Entrada', '$Salida')";
     $resultadoinsertmovimiento = $mysqli->query($insertexpediente);
     header('Location: ../../web/horario/index');
 

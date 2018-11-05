@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Horario;
-use app\models\HorarioSearch;
+use app\models\Horariosearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -15,7 +15,7 @@ use yii\filters\VerbFilter;
 class HorarioController extends Controller
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function behaviors()
     {
@@ -35,7 +35,7 @@ class HorarioController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new HorarioSearch();
+        $searchModel = new Horariosearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -48,7 +48,6 @@ class HorarioController extends Controller
      * Displays a single Horario model.
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
     {
@@ -66,18 +65,13 @@ class HorarioController extends Controller
     {
         $model = new Horario();
 
-        if ($model->load(Yii::$app->request->post())) {
-          if ($model->save()) {
-            Yii::$app->session->setFlash('success', "User created successfully.");
-            } else {
-              Yii::$app->session->setFlash('error', "User created successfully.");
-            }
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->IdHorario]);
+        } else {
+            return $this->render('create', [
+                'model' => $model,
+            ]);
         }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
     }
 
     /**
@@ -85,24 +79,18 @@ class HorarioController extends Controller
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post())) {
-          if ($model->save()) {
-            Yii::$app->session->setFlash('warning', "User created successfully.");
-            } else {
-              Yii::$app->session->setFlash('warning', "User created successfully.");
-            }
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->IdHorario]);
+        } else {
+            return $this->render('update', [
+                'model' => $model,
+            ]);
         }
-
-        return $this->render('update', [
-            'model' => $model,
-        ]);
     }
 
     /**
@@ -110,12 +98,11 @@ class HorarioController extends Controller
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-        Yii::$app->session->setFlash('error', "User created successfully.");
+
         return $this->redirect(['index']);
     }
 
@@ -130,8 +117,8 @@ class HorarioController extends Controller
     {
         if (($model = Horario::findOne($id)) !== null) {
             return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
         }
-
-        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

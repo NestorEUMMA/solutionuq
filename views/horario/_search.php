@@ -1,11 +1,5 @@
 <?php
 
-use yii\helpers\Html;
-use yii\widgets\ActiveForm;
-use app\models\Empleado;
-use yii\helpers\ArrayHelper;
-use kartik\select2\Select2;
-
 include '../include/dbconnect.php';
 $queryempresa = "SELECT IdEmpresa, NombreEmpresa
                FROM empresa
@@ -13,24 +7,47 @@ $queryempresa = "SELECT IdEmpresa, NombreEmpresa
             $resultadoempresa = $mysqli->query($queryempresa);
             while ($test = $resultadoempresa->fetch_assoc())
                        {
-                           $empresa = $test['NombreEmpresa'];
                            $idempresa = $test['IdEmpresa'];
+                           $empresa = $test['NombreEmpresa'];
+
+                       }
 
 
-                         }
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+use app\models\Empleado;
+use yii\helpers\ArrayHelper;
+use kartik\select2\Select2;
+/* @var $this yii\web\View */
+/* @var $model app\models\Horariosearch */
+/* @var $form yii\widgets\ActiveForm */
 ?>
 
 <div class="horario-search">
 
-    <?php $form = ActiveForm::begin([
-        'action' => ['index'],
-        'method' => 'get',
-    ]); ?>
+  <?php $form = ActiveForm::begin([
+      'action' => ['index'],
+      'method' => 'get',
+  ]); ?>
 
+      <?php
+          echo $form->field($model, 'IdEmpleado')->widget(Select2::classname(), [
+              'data' => ArrayHelper::map(Empleado::find()->where(['EmpleadoActivo' => 1])->andWhere(['IdEmpresa' => $idempresa])->all(), 'IdEmpleado', 'fullName'),
+              'language' => 'es',
+              'options' => ['placeholder' => ' Selecione ...'],
+              'pluginOptions' => [
+                  'allowClear' => true
+              ],
+          ]);
+      ?>
 
-
-    <?php echo $form->field($model, 'IdEmpleado')->widget(Select2::classname(), [
-      'data' => ArrayHelper::map(Empleado::find()->where(['IdEmpresa' => ''.$idempresa.''])->all(), 'IdEmpleado', 'fullName'),
+  <?php
+  echo $form->field($model, 'JornadaLaboral')->widget(Select2::classname(), [
+      'data' => $data = [
+          "Jornada 1" => "Jornada 1",
+          "Jornada 2" => "Jornada 2",
+          "Jornada 3" => "Jornada 3",
+      ],
       'language' => 'es',
       'options' => ['placeholder' => ' Selecione ...'],
       'pluginOptions' => [
@@ -39,25 +56,8 @@ $queryempresa = "SELECT IdEmpresa, NombreEmpresa
   ]);
   ?>
 
- 
-
-        <?php
-    echo $form->field($model, 'JornadaLaboral')->widget(Select2::classname(), [
-        'data' => $data = [
-            "Jornada 1" => "Jornada 1",
-            "Jornada 2" => "Jornada 2",
-            "Jornada 3" => "Jornada 3",
-        ],
-        'language' => 'es',
-        'options' => ['placeholder' => ' Selecione ...'],
-        'pluginOptions' => [
-            'allowClear' => true
-        ],
-    ]);
-    ?>
-
     <div class="form-group">
-        <?= Html::submitButton('Buscar', ['class' => 'btn btn-primary']) ?>
+        <?= Html::submitButton('Buscar', ['class' => 'btn btn-info']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

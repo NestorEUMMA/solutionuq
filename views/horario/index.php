@@ -20,16 +20,6 @@ $queryempresa = "SELECT IdEmpresa, NombreEmpresa
 
                    }
 
-$queryempresa = "SELECT IdUsuario
-           FROM usuario
-           WHERE IdUsuario =  '" . $_SESSION['IdUsuario'] . "'";
-        $resultadoempresa = $mysqli->query($queryempresa);
-        while ($test = $resultadoempresa->fetch_assoc())
-                   {
-                       $idusuario = $test['IdUsuario'];
-
-                   }
-
  $urlperupdate = '../horario/update';
  $urlperview = '../horario/view';
  $urlpercreate = '../horario/create';
@@ -164,14 +154,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     ['class' => 'yii\grid\SerialColumn'],
                         [
                           'attribute'=>'IdEmpleado',
-                          'value'=>'empleado.fullname',
+                          'value'=>'idEmpleado.fullname',
                         ],
                         'JornadaLaboral',
                         'DiaLaboral',
                         'EntradaLaboral',
                          'SalidaLaboral',
 
-                        ['class' => 'yii\grid\ActionColumn', 'options' => ['style' => 'width:100px;'], 'template' => " $delete "],
+                        ['class' => 'yii\grid\ActionColumn', 'options' => ['style' => 'width:100px;'], 'template' => " $view $update $delete "],
                     ],
                   ]); ?>
               </table>
@@ -233,14 +223,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="form-group">
                       <label for="title">Salida Laboral</label>
                       <input name="Salida" type="text" class="form-control timepicker"/>
-                  </div>
-                  <div class="form-group" hidden="hidden">
-                      <label for="title">Empresa</label>
-                      <input name="IdEmpresa" type="text" value="<?php echo $idempresa?>" />
-                  </div>
-                  <div class="form-group" hidden="hidden">
-                      <label for="title">Usuario</label>
-                      <input name="IdUsuario" type="text" value="<?php echo $idusuario?>" />
                   </div>
               </div>
               <div class="modal-footer">
