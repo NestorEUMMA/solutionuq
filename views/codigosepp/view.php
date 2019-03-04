@@ -44,6 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
       "debug" =>  false,
       "progressBar" => true,
       "preventDuplicates" => true,
+      -
       "positionClass" => "toast-top-right",
       "onclick" => null,
       "showDuration" => "100",
