@@ -1,6 +1,8 @@
 <?php
 
 include '../include/dbconnect.php';
+$time = time();
+$hoy = date("Y-m-d H:i:s", $time -28800);
 $queryempresa = "SELECT IdEmpresa, NombreEmpresa
                FROM empresa
                WHERE IdEmpresa =  '" . $_SESSION['IdEmpresa'] . "'";
@@ -76,6 +78,7 @@ use kartik\file\FileInput;
                              <div class="panel-body">
                                  <div>
                                    <div class="row">
+                                   <?php echo $hoy  ?>
                                        <div class="form-group col-lg-4">
                                            <?= $form->field($model, 'Nup')->widget(\yii\widgets\MaskedInput::className(), [
                                                    'mask' => '999999999999',
@@ -599,6 +602,11 @@ use kartik\file\FileInput;
                                                   <div class="form-group col-lg-6">
                                                       <?php
                                                       echo $form->field($model, 'IdUsuario')->hiddenInput(['value'=> $idusuario])->label(false);
+                                                      ?>
+                                                  </div>
+                                                  <div class="form-group col-lg-6">
+                                                      <?php
+                                                      echo $form->field($model, 'FechaTransaccion')->hiddenInput(['value'=> $hoy])->label(false);
                                                       ?>
                                                   </div>
                                                </div>

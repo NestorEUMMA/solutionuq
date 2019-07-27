@@ -61,6 +61,7 @@ use Yii;
  * @property string $DuiDe
  * @property string $OtrosDatos
  * @property string $HerramientasTrabajo
+* @property string $FechaTransaccion
  *
  * @property Deduccionempleado[] $deduccionempleados
  * @property Banco $idBanco
@@ -99,7 +100,7 @@ class Empleado extends \yii\db\ActiveRecord
             [['FNacimiento'], 'safe'],
             [['SalarioNominal'], 'number'],
             [['DeducIsssAfp', 'DeducIsssIpsfa', 'NoDependiente', 'EmpleadoActivo','Pensionado'], 'boolean'],
-            [['Nup', 'NumTipoDocumento', 'Genero', 'PrimerNomEmpleado', 'SegunNomEmpleado', 'PrimerApellEmpleado', 'SegunApellEmpleado', 'ApellidoCasada', 'ConocidoPor', 'NIsss', 'MIpsfa', 'Direccion', 'IdDepartamentos', 'IdMunicipios', 'CorreoElectronico', 'TelefonoEmpleado', 'CelularEmpleado', 'CBancaria', 'CasoEmergencia', 'TeleCasoEmergencia', 'DocumentBeneficiario', 'NDocBeneficiario', 'FechaContratacion', 'FechaDespido','DuiEl','DuiDe','FNacimientoDep1','FNacimientoDep2','FNacimientoDep3'], 'string', 'max' => 45],
+            [['Nup', 'NumTipoDocumento', 'Genero', 'PrimerNomEmpleado', 'SegunNomEmpleado', 'PrimerApellEmpleado', 'SegunApellEmpleado', 'ApellidoCasada', 'ConocidoPor', 'NIsss', 'MIpsfa', 'Direccion', 'IdDepartamentos', 'IdMunicipios', 'CorreoElectronico', 'TelefonoEmpleado', 'CelularEmpleado', 'CBancaria', 'CasoEmergencia', 'TeleCasoEmergencia', 'DocumentBeneficiario', 'NDocBeneficiario', 'FechaContratacion', 'FechaDespido','DuiEl','DuiDe','FNacimientoDep1','FNacimientoDep2','FNacimientoDep3','FechaTransaccion'], 'string', 'max' => 45],
             [['Nit'], 'string', 'max' => 25],
             [['Profesion','DuiExpedido'], 'string', 'max' => 100],
             [['file'], 'file','skipOnEmpty' => true, 'extensions' => 'png, jpg, jpeg, gif'],
@@ -192,6 +193,7 @@ class Empleado extends \yii\db\ActiveRecord
              'idMunicipios.DescripcionMunicipios' => 'Municipio',
              'IdEmpresa' => 'Empresa',
              'IdUsuario' => 'Usuario',
+             'FechaTransaccion' => 'FechaTransaccion',
 
         ];
     }
